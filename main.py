@@ -1,5 +1,9 @@
 from inscricoes import Inscricao
 from provas import Notas
+import os
+
+def limparTela():
+    os.system('cls' if os.name == 'nt' else 'clear')
 
 NomeAprovados = []
 NotaAprovados = []
@@ -12,6 +16,7 @@ while True:
     if controle == 'n':
         break
     elif controle == 's':
+        limparTela()
         nome = input('Informe o nome do candidato: ')
         endereco = input('Cidade: ')
         exp = int(input('Anos de experiência: '))
@@ -27,6 +32,7 @@ while True:
     if controle == 'n':
         break
     elif controle == 's':
+        limparTela()
         nome = input('Informe o nome do candidado que vai informar a nota: ')
         nota = float(input('Nota: '))
         for candidato in Inscritos:
@@ -41,6 +47,6 @@ for finalistas in InscritosNotas:
     if finalistas.nota >= 8:
         NomeAprovados.append(finalistas.inscricao.nome)
         NotaAprovados.append(finalistas.nota)
-
+print('CANDIDADO      -      SITUAÇÃO      -      NOTA')
 for i in range(0,len(NomeAprovados)):
     print(f'\n{NomeAprovados[i]}   -   APROVADO   -   {NotaAprovados[i]}')
